@@ -52,6 +52,21 @@ const copy = {
     en: "Understand the difference between Gap (between), Margin (external), and Padding (internal).",
     es: "Entiende la diferencia entre Gap (entre elementos), Margin (externo) y Padding (interno).",
   },
+  spacingGap: { en: "1. Gap (Layout spacing)", es: "🧩 1. Gap (el más usado)" },
+  spacingGapDesc: { 
+    en: "The standard for grids and flex. Space between elements.", 
+    es: "Es el nombre más correcto para grid o flex. Espacio entre los elementos." 
+  },
+  spacingMargin: { en: "2. Margin (External space)", es: "📦 2. Margin (espacio externo)" },
+  spacingMarginDesc: { 
+    en: "Space outside the element's border.", 
+    es: "Separación manual: m = margin (afuera del elemento)." 
+  },
+  spacingPadding: { en: "3. Padding (Internal space)", es: "📐 3. Padding (espacio interno)" },
+  spacingPaddingDesc: { 
+    en: "Space inside the element, around content.", 
+    es: "No es entre recuadros: p = espacio dentro del recuadro." 
+  },
   consistencyTitle: { en: "Visual Consistency", es: "Consistencia visual" },
   consistencyDesc: {
     en: "Keep a uniform style: coherent colors, consistent typography, and same logic for buttons.",
@@ -637,32 +652,41 @@ function SpacingScreen({ lang, copy }: { lang: "en" | "es"; copy: typeof copy })
     <div className="h-full bg-white p-4 flex flex-col gap-6 overflow-hidden">
       {/* Gap Demo */}
       <div className="space-y-2">
-        <p className="text-[10px] font-bold text-gray-800">{l("gapLabel")}</p>
+        <p className="text-[10px] font-bold text-gray-800">{l("spacingGap")}</p>
         <div className="grid grid-cols-2 gap-3 bg-blue-50 p-2 rounded-xl border border-blue-100">
           <div className="h-8 bg-blue-500 rounded-lg flex items-center justify-center text-white text-[8px] font-bold">1</div>
           <div className="h-8 bg-blue-500 rounded-lg flex items-center justify-center text-white text-[8px] font-bold">2</div>
         </div>
-        <p className="text-[8px] text-gray-400 italic">{l("gapInfo")}</p>
+        <p className="text-[8px] text-gray-400 italic leading-tight">{l("spacingGapDesc")}</p>
+        <div className="bg-gray-900 rounded-lg p-2 text-[6px] text-white font-mono leading-tight">
+          {`<div class="grid gap-4">...</div>`}
+        </div>
       </div>
 
       {/* Margin Demo */}
       <div className="space-y-2">
-        <p className="text-[10px] font-bold text-gray-800">{l("marginLabel")}</p>
+        <p className="text-[10px] font-bold text-gray-800">{l("spacingMargin")}</p>
         <div className="bg-orange-50 p-2 rounded-xl border border-orange-100 flex">
           <div className="m-2 h-8 w-1/2 bg-orange-500 rounded-lg flex items-center justify-center text-white text-[8px] font-bold">Caja</div>
         </div>
-        <p className="text-[8px] text-gray-400 italic">{l("marginInfo")}</p>
+        <p className="text-[8px] text-gray-400 italic leading-tight">{l("spacingMarginDesc")}</p>
+        <div className="bg-gray-900 rounded-lg p-2 text-[6px] text-white font-mono leading-tight">
+          {`<div class="m-4">Elemento</div>`}
+        </div>
       </div>
 
       {/* Padding Demo */}
       <div className="space-y-2">
-        <p className="text-[10px] font-bold text-gray-800">{l("paddingLabel")}</p>
+        <p className="text-[10px] font-bold text-gray-800">{l("spacingPadding")}</p>
         <div className="bg-green-50 rounded-xl border border-green-100">
           <div className="p-4 bg-green-500 rounded-lg text-white text-[8px] font-bold text-center">
             Contenido
           </div>
         </div>
-        <p className="text-[8px] text-gray-400 italic">{l("paddingInfo")}</p>
+        <p className="text-[8px] text-gray-400 italic leading-tight">{l("spacingPaddingDesc")}</p>
+        <div className="bg-gray-900 rounded-lg p-2 text-[6px] text-white font-mono leading-tight">
+          {`<div class="p-4">Contenido</div>`}
+        </div>
       </div>
     </div>
   )
