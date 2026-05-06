@@ -26,9 +26,17 @@ const copy = {
   configAccessibility: { en: "Contrast Check", es: "Contraste (Accesibilidad)" },
   configNavigation: { en: "Navigation Pattern", es: "Patron de Navegacion" },
   configSpeed: { en: "App Speed", es: "Velocidad de App" },
+  configHierarchy: { en: "Visual Hierarchy", es: "Jerarquia Visual" },
+  configTesting: { en: "Usage Heatmap", es: "Mapa de Calor" },
   // Simplicity options
   simplicityFull: { en: "Full UI", es: "UI Completa" },
   simplicityEssential: { en: "Essential Only", es: "Solo Esencial" },
+  // Hierarchy options
+  hierarchyGood: { en: "Clear", es: "Clara" },
+  hierarchyBad: { en: "Poor", es: "Pobre" },
+  // Testing options
+  testingOff: { en: "Hidden", es: "Oculto" },
+  testingOn: { en: "Visible", es: "Visible" },
   // Feedback options
   feedbackNone: { en: "None", es: "Ninguno" },
   feedbackHaptic: { en: "Haptic/Visual", es: "Haptico/Visual" },
@@ -91,6 +99,8 @@ export function PlaygroundSection() {
   const [isBottomNav, setIsBottomNav] = useState(true)
   const [isSlow, setIsSlow] = useState(false)
   const [showAccessibility, setShowAccessibility] = useState(false)
+  const [isHierarchyBad, setIsHierarchyBad] = useState(false)
+  const [showHeatmap, setShowHeatmap] = useState(false)
   const { lang } = useApp()
   const l = (key: keyof typeof copy) => copy[key][lang]
 
@@ -354,6 +364,34 @@ export function PlaygroundSection() {
                     </button>
                   </div>
 
+                  {/* Visual Hierarchy */}
+                  <div className="flex items-center justify-between bg-card p-3 rounded-2xl border border-border">
+                    <div>
+                      <p className="text-[10px] text-muted-foreground uppercase">{l("configHierarchy")}</p>
+                      <p className="text-xs font-bold">{isHierarchyBad ? l("hierarchyBad") : l("hierarchyGood")}</p>
+                    </div>
+                    <button 
+                      onClick={() => setIsHierarchyBad(!isHierarchyBad)}
+                      className={`w-10 h-5 rounded-full transition-colors relative ${isHierarchyBad ? "bg-red-400" : "bg-primary"}`}
+                    >
+                      <div className={`absolute top-1 w-3 h-3 bg-white rounded-full transition-all ${isHierarchyBad ? "left-6" : "left-1"}`} />
+                    </button>
+                  </div>
+
+                  {/* Testing Heatmap */}
+                  <div className="flex items-center justify-between bg-card p-3 rounded-2xl border border-border">
+                    <div>
+                      <p className="text-[10px] text-muted-foreground uppercase">{l("configTesting")}</p>
+                      <p className="text-xs font-bold">{showHeatmap ? l("testingOn") : l("testingOff")}</p>
+                    </div>
+                    <button 
+                      onClick={() => setShowHeatmap(!showHeatmap)}
+                      className={`w-10 h-5 rounded-full transition-colors relative ${showHeatmap ? "bg-orange-400" : "bg-muted"}`}
+                    >
+                      <div className={`absolute top-1 w-3 h-3 bg-white rounded-full transition-all ${showHeatmap ? "left-6" : "left-1"}`} />
+                    </button>
+                  </div>
+
                   {/* Accessibility */}
                   <div className="flex items-center justify-between bg-card p-3 rounded-2xl border border-border col-span-full">
                     <div className="flex items-center gap-3">
@@ -404,6 +442,8 @@ export function PlaygroundSection() {
                 isBottomNav={isBottomNav}
                 isSlow={isSlow}
                 showAccessibility={showAccessibility}
+                isHierarchyBad={isHierarchyBad}
+                showHeatmap={showHeatmap}
                 lang={lang}
                 copy={copy}
               />
@@ -430,6 +470,8 @@ interface LivePreviewProps {
   isBottomNav: boolean
   isSlow: boolean
   showAccessibility: boolean
+  isHierarchyBad: boolean
+  showHeatmap: boolean
   lang: "en" | "es"
   copy: typeof copy
 }
@@ -449,6 +491,8 @@ function LivePreviewScreen({
   isBottomNav,
   isSlow,
   showAccessibility,
+  isHierarchyBad,
+  showHeatmap,
   lang,
   copy,
 }: LivePreviewProps) {
@@ -474,13 +518,25 @@ function LivePreviewScreen({
 
   // Accessibility colors
   const accessibilityBg = showAccessibility ? "#f3f4f6" : "white"
-  const accessibilityText = showAccessibility ? "#9ca3af" : "gray"
+
+  // Hierarchy calculations
+  const finalTitleSize = isHierarchyBad ? bodySize : titleSize
+  const finalTitleColor = isHierarchyBad ? "#9ca3af" : "#111827"
 
   return (
     <div
-      className={`h-full bg-white flex flex-col overflow-hidden transition-all duration-300 ${fontFamilyClass}`}
+      className={`h-full relative bg-white flex flex-col overflow-hidden transition-all duration-300 ${fontFamilyClass}`}
       style={{ ...textStyle, background: accessibilityBg }}
     >
+      {/* Heatmap Overlay */}
+      {showHeatmap && (
+        <div className="absolute inset-0 z-40 pointer-events-none opacity-40">
+          <div className="absolute top-1/4 left-1/3 w-20 h-20 bg-red-500 rounded-full blur-2xl" />
+          <div className="absolute top-1/2 right-1/4 w-24 h-24 bg-orange-400 rounded-full blur-2xl" />
+          <div className="absolute bottom-1/4 left-1/2 w-32 h-32 bg-blue-500 rounded-full blur-3xl" />
+        </div>
+      )}
+
       {/* Top Nav (Simulated if isBottomNav is false) */}
       {!isBottomNav && (
         <div className="bg-gray-800 text-white p-2 flex justify-around text-[7px] uppercase font-bold tracking-widest">
@@ -503,11 +559,11 @@ function LivePreviewScreen({
         <div className="flex items-center justify-between">
           <div>
             <p className="text-gray-400 transition-all" style={{ fontSize: `${bodySize * 0.8}px` }}>{l("dashboard")}</p>
-            <p className={`font-bold text-gray-900 transition-all ${fontWeightClass}`} style={{ fontSize: `${titleSize}px` }}>{l("myApp")}</p>
+            <p className={`font-bold transition-all ${fontWeightClass}`} style={{ fontSize: `${finalTitleSize}px`, color: finalTitleColor }}>{l("myApp")}</p>
           </div>
           <div
             className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold"
-            style={{ background: primaryColor, fontSize: "10px" }}
+            style={{ background: isHierarchyBad ? "#e5e7eb" : primaryColor, fontSize: "10px" }}
           >
             JD
           </div>
@@ -527,10 +583,10 @@ function LivePreviewScreen({
           whileHover={hasFeedback ? { scale: 1.02 } : {}}
           whileTap={hasFeedback ? { scale: 0.98 } : {}}
           className={`${rnd} text-white transition-all duration-300 shadow-lg`} 
-          style={{ padding: p, background: primaryColor }}
+          style={{ padding: p, background: isHierarchyBad ? "#f3f4f6" : primaryColor, color: isHierarchyBad ? "#9ca3af" : "white" }}
         >
           <p className="opacity-80 mb-0.5 transition-all" style={{ fontSize: `${bodySize}px` }}>{l("activeProject")}</p>
-          <p className={`font-bold transition-all ${fontWeightClass}`} style={{ fontSize: `${titleSize}px` }}>{l("sprint")}</p>
+          <p className={`font-bold transition-all ${fontWeightClass}`} style={{ fontSize: `${finalTitleSize}px` }}>{l("sprint")}</p>
           <div className="mt-3 bg-white/20 rounded-full h-1.5 overflow-hidden">
             <motion.div
               initial={{ width: 0 }}
@@ -548,7 +604,7 @@ function LivePreviewScreen({
           {statCards.map(({ labelKey, val }) => (
             <div key={labelKey} className={`bg-gray-50 ${rnd} transition-all`} style={{ padding: `${pad / 8}rem` }}>
               <p className="text-gray-400 transition-all" style={{ fontSize: `${bodySize * 0.9}px` }}>{l(labelKey)}</p>
-              <p className={`font-bold text-gray-900 transition-all ${fontWeightClass}`} style={{ fontSize: `${titleSize * 0.9}px` }}>{val}</p>
+              <p className={`font-bold text-gray-900 transition-all ${fontWeightClass}`} style={{ fontSize: `${finalTitleSize * 0.9}px` }}>{val}</p>
             </div>
           ))}
         </div>
@@ -565,7 +621,7 @@ function LivePreviewScreen({
           >
             <div
               className="w-4 h-4 rounded-md flex-shrink-0"
-              style={{ background: primaryColor, opacity: i === 0 ? 1 : 0.2 }}
+              style={{ background: isHierarchyBad ? "#e5e7eb" : primaryColor, opacity: i === 0 ? 1 : 0.2 }}
             />
             <p className="text-gray-700 transition-all flex-1" style={{ fontSize: `${bodySize}px` }}>{l(key)}</p>
           </motion.div>
@@ -580,7 +636,7 @@ function LivePreviewScreen({
           whileHover={hasFeedback ? { scale: 1.02 } : {}}
           whileTap={hasFeedback ? { scale: 0.98 } : {}}
           className={`w-full text-white font-bold ${rnd} transition-all duration-300 shadow-lg`}
-          style={{ background: primaryColor, padding: `${pad / 8}rem`, fontSize: `${btnSize}px` }}
+          style={{ background: isHierarchyBad ? "#f3f4f6" : primaryColor, color: isHierarchyBad ? "#9ca3af" : "white", padding: `${pad / 8}rem`, fontSize: `${btnSize}px` }}
         >
           {l("continueCta")}
         </motion.button>
@@ -595,12 +651,12 @@ function LivePreviewScreen({
               whileHover={hasFeedback ? { y: -2 } : {}}
               className="flex flex-col items-center gap-1"
             >
-              <div className="w-5 h-5 rounded-lg" style={{ background: i === 0 ? primaryColor : "#f3f4f6" }} />
+              <div className="w-5 h-5 rounded-lg" style={{ background: i === 0 ? (isHierarchyBad ? "#e5e7eb" : primaryColor) : "#f3f4f6" }} />
               <p
                 className="transition-all"
                 style={{
                   fontSize: `${bodySize * 0.8}px`,
-                  color: i === 0 ? primaryColor : "#9ca3af",
+                  color: i === 0 ? (isHierarchyBad ? "#9ca3af" : primaryColor) : "#9ca3af",
                   fontWeight: i === 0 ? "bold" : "normal",
                 }}
               >
