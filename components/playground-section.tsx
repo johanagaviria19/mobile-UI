@@ -20,20 +20,30 @@ const copy = {
   configColor: { en: "Color", es: "Color" },
   configSpacing: { en: "Spacing", es: "Espaciado" },
   configFont: { en: "Font", es: "Fuente" },
+  configFontWeight: { en: "Weight", es: "Peso" },
   // Color names
   colorBlue: { en: "Blue", es: "Azul" },
   colorPurple: { en: "Purple", es: "Morado" },
   colorTeal: { en: "Teal", es: "Verde azulado" },
   colorOrange: { en: "Orange", es: "Naranja" },
   colorRose: { en: "Rose", es: "Rosa" },
+  colorIndigo: { en: "Indigo", es: "Indigo" },
+  colorEmerald: { en: "Emerald", es: "Esmeralda" },
+  colorAmber: { en: "Amber", es: "Ambar" },
   // Spacing labels
   spacingCompact: { en: "Compact", es: "Compacto" },
+  spacingTight: { en: "Tight", es: "Ajustado" },
   spacingMedium: { en: "Medium", es: "Medio" },
+  spacingRelaxed: { en: "Relaxed", es: "Relajado" },
   spacingSpacious: { en: "Spacious", es: "Espacioso" },
   // Font labels
-  fontSmall: { en: "Small", es: "Pequena" },
-  fontMedium: { en: "Medium", es: "Mediana" },
-  fontLarge: { en: "Large", es: "Grande" },
+  fontSans: { en: "Sans Serif", es: "Sans Serif" },
+  fontSerif: { en: "Serif", es: "Serif" },
+  fontMono: { en: "Monospace", es: "Monospace" },
+  // Weight labels
+  weightRegular: { en: "Regular", es: "Regular" },
+  weightMedium: { en: "Medium", es: "Medio" },
+  weightBold: { en: "Bold", es: "Negrita" },
   // Phone screen
   dashboard: { en: "Dashboard", es: "Panel" },
   myApp: { en: "My App", es: "Mi App" },
@@ -55,37 +65,53 @@ const copy = {
 
 export function PlaygroundSection() {
   const [colorIdx, setColorIdx] = useState(0)
-  const [spacingIdx, setSpacingIdx] = useState(1)
-  const [fontIdx, setFontIdx] = useState(1)
+  const [spacingIdx, setSpacingIdx] = useState(2)
+  const [fontFamilyIdx, setFontFamilyIdx] = useState(0)
+  const [fontScale, setFontScale] = useState(1)
+  const [fontWeightIdx, setFontWeightIdx] = useState(1)
   const { lang } = useApp()
   const l = (key: keyof typeof copy) => copy[key][lang]
 
   const colorOptions = [
     { labelKey: "colorBlue" as const, value: "oklch(0.55 0.22 264)" },
+    { labelKey: "colorIndigo" as const, value: "oklch(0.5 0.2 280)" },
     { labelKey: "colorPurple" as const, value: "oklch(0.55 0.22 300)" },
-    { labelKey: "colorTeal" as const, value: "oklch(0.55 0.18 195)" },
-    { labelKey: "colorOrange" as const, value: "oklch(0.65 0.2 50)" },
     { labelKey: "colorRose" as const, value: "oklch(0.58 0.22 15)" },
+    { labelKey: "colorOrange" as const, value: "oklch(0.65 0.2 50)" },
+    { labelKey: "colorAmber" as const, value: "oklch(0.7 0.15 70)" },
+    { labelKey: "colorEmerald" as const, value: "oklch(0.6 0.2 150)" },
+    { labelKey: "colorTeal" as const, value: "oklch(0.55 0.18 195)" },
   ]
 
   const spacingOptions = [
-    { labelKey: "spacingCompact" as const, px: 4, gap: 6, rounding: "rounded-lg" },
-    { labelKey: "spacingMedium" as const, px: 8, gap: 10, rounding: "rounded-xl" },
-    { labelKey: "spacingSpacious" as const, px: 12, gap: 16, rounding: "rounded-2xl" },
+    { labelKey: "spacingCompact" as const, px: 3, gap: 4, rounding: "rounded-md" },
+    { labelKey: "spacingTight" as const, px: 5, gap: 8, rounding: "rounded-lg" },
+    { labelKey: "spacingMedium" as const, px: 8, gap: 12, rounding: "rounded-xl" },
+    { labelKey: "spacingRelaxed" as const, px: 12, gap: 16, rounding: "rounded-2xl" },
+    { labelKey: "spacingSpacious" as const, px: 16, gap: 24, rounding: "rounded-3xl" },
   ]
 
-  const fontSizeOptions = [
-    { labelKey: "fontSmall" as const, title: "text-xs", body: "text-[8px]", btn: "text-[8px]" },
-    { labelKey: "fontMedium" as const, title: "text-sm", body: "text-[9px]", btn: "text-[9px]" },
-    { labelKey: "fontLarge" as const, title: "text-base", body: "text-[10px]", btn: "text-[10px]" },
+  const fontFamilyOptions = [
+    { labelKey: "fontSans" as const, class: "font-sans" },
+    { labelKey: "fontSerif" as const, class: "font-serif" },
+    { labelKey: "fontMono" as const, class: "font-mono" },
+  ]
+
+  const fontWeightOptions = [
+    { labelKey: "weightRegular" as const, class: "font-normal" },
+    { labelKey: "weightMedium" as const, class: "font-medium" },
+    { labelKey: "weightBold" as const, class: "font-bold" },
   ]
 
   const color = colorOptions[colorIdx]
   const spacing = spacingOptions[spacingIdx]
-  const font = fontSizeOptions[fontIdx]
-  const pad = spacing.px
-  const gap = spacing.gap
-  const rnd = spacing.rounding
+  const fontFamily = fontFamilyOptions[fontFamilyIdx]
+  const fontWeight = fontWeightOptions[fontWeightIdx]
+
+  // Scale calculations
+  const titleBaseSize = 14 * fontScale
+  const bodyBaseSize = 9 * fontScale
+  const btnBaseSize = 9 * fontScale
 
   return (
     <section id="playground" className="py-24 bg-secondary/30">
@@ -106,96 +132,143 @@ export function PlaygroundSection() {
           </p>
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row gap-12 items-center justify-center">
+        <div className="flex flex-col lg:flex-row gap-12 items-start justify-center">
           {/* Controls */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex-1 max-w-md space-y-8"
+            className="flex-1 max-w-md space-y-10"
           >
             {/* Color picker */}
-            <div>
-              <label className="block text-sm font-semibold text-foreground mb-3">{l("primaryColor")}</label>
-              <div className="flex gap-3 flex-wrap">
+            <div className="bg-card p-6 rounded-3xl border border-border shadow-sm">
+              <label className="block text-sm font-bold text-foreground mb-4">{l("primaryColor")}</label>
+              <div className="grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-4 gap-3">
                 {colorOptions.map((c, i) => (
                   <button
                     key={c.labelKey}
                     onClick={() => setColorIdx(i)}
                     title={l(c.labelKey)}
                     aria-label={l(c.labelKey)}
-                    className={`w-10 h-10 rounded-2xl transition-all duration-200 border-2 ${
-                      colorIdx === i ? "scale-110 border-foreground shadow-lg" : "border-transparent hover:scale-105"
+                    className={`aspect-square rounded-xl transition-all duration-300 border-2 ${
+                      colorIdx === i ? "scale-110 border-foreground shadow-lg" : "border-transparent hover:scale-105 opacity-80 hover:opacity-100"
                     }`}
                     style={{ background: c.value }}
                   />
                 ))}
               </div>
-              <p className="text-xs text-muted-foreground mt-2">
+              <p className="text-xs text-muted-foreground mt-4">
                 {l("selected")} <span className="font-semibold text-foreground">{l(color.labelKey)}</span>
               </p>
             </div>
 
             {/* Spacing */}
-            <div>
-              <label className="block text-sm font-semibold text-foreground mb-3">{l("spacingDensity")}</label>
-              <div className="flex gap-2">
-                {spacingOptions.map((s, i) => (
-                  <button
-                    key={s.labelKey}
-                    onClick={() => setSpacingIdx(i)}
-                    className={`flex-1 py-2.5 rounded-2xl text-sm font-semibold transition-all duration-200 ${
-                      spacingIdx === i
-                        ? "text-primary-foreground shadow-lg shadow-primary/20"
-                        : "bg-card border border-border text-muted-foreground hover:text-foreground"
-                    }`}
-                    style={spacingIdx === i ? { background: color.value } : {}}
-                  >
-                    {l(s.labelKey)}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Font size */}
-            <div>
-              <label className="block text-sm font-semibold text-foreground mb-3">{l("fontSize")}</label>
-              <div className="flex items-center gap-4">
-                <span className="text-xs text-muted-foreground">A</span>
+            <div className="bg-card p-6 rounded-3xl border border-border shadow-sm">
+              <label className="block text-sm font-bold text-foreground mb-4">{l("spacingDensity")}</label>
+              <div className="space-y-4">
                 <input
                   type="range"
                   min={0}
-                  max={2}
+                  max={spacingOptions.length - 1}
                   step={1}
-                  value={fontIdx}
-                  onChange={(e) => setFontIdx(Number(e.target.value))}
-                  className="flex-1 accent-primary h-1.5 rounded-full"
+                  value={spacingIdx}
+                  onChange={(e) => setSpacingIdx(Number(e.target.value))}
+                  className="w-full accent-primary h-2 rounded-full cursor-pointer"
                 />
-                <span className="text-base font-bold text-foreground">A</span>
+                <div className="flex justify-between">
+                  {spacingOptions.map((s, i) => (
+                    <button
+                      key={s.labelKey}
+                      onClick={() => setSpacingIdx(i)}
+                      className={`text-[10px] font-bold transition-colors ${
+                        spacingIdx === i ? "text-primary" : "text-muted-foreground"
+                      }`}
+                    >
+                      {l(s.labelKey)}
+                    </button>
+                  ))}
+                </div>
               </div>
-              <div className="flex justify-between mt-1.5">
-                {fontSizeOptions.map((f, i) => (
-                  <p key={f.labelKey} className={`text-xs ${fontIdx === i ? "text-primary font-semibold" : "text-muted-foreground"}`}>
-                    {l(f.labelKey)}
-                  </p>
-                ))}
+            </div>
+
+            {/* Typography */}
+            <div className="bg-card p-6 rounded-3xl border border-border shadow-sm space-y-8">
+              {/* Font Family */}
+              <div>
+                <label className="block text-sm font-bold text-foreground mb-4">{l("configFont")}</label>
+                <div className="flex gap-2">
+                  {fontFamilyOptions.map((f, i) => (
+                    <button
+                      key={f.labelKey}
+                      onClick={() => setFontFamilyIdx(i)}
+                      className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all ${
+                        fontFamilyIdx === i
+                          ? "bg-primary text-primary-foreground shadow-md"
+                          : "bg-secondary text-muted-foreground hover:bg-muted"
+                      }`}
+                    >
+                      {l(f.labelKey)}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Font Weight */}
+              <div>
+                <label className="block text-sm font-bold text-foreground mb-4">{l("configFontWeight")}</label>
+                <div className="flex gap-2">
+                  {fontWeightOptions.map((w, i) => (
+                    <button
+                      key={w.labelKey}
+                      onClick={() => setFontWeightIdx(i)}
+                      className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all ${
+                        fontWeightIdx === i
+                          ? "bg-primary text-primary-foreground shadow-md"
+                          : "bg-secondary text-muted-foreground hover:bg-muted"
+                      }`}
+                    >
+                      {l(w.labelKey)}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Font Scale */}
+              <div>
+                <label className="block text-sm font-bold text-foreground mb-4">{l("fontSize")}</label>
+                <div className="flex items-center gap-4">
+                  <span className="text-xs text-muted-foreground">A</span>
+                  <input
+                    type="range"
+                    min={0.8}
+                    max={1.4}
+                    step={0.1}
+                    value={fontScale}
+                    onChange={(e) => setFontScale(Number(e.target.value))}
+                    className="flex-1 accent-primary h-2 rounded-full cursor-pointer"
+                  />
+                  <span className="text-lg font-bold text-foreground">A</span>
+                </div>
               </div>
             </div>
 
             {/* Config summary */}
-            <div className="bg-card rounded-2xl border border-border p-4 space-y-2">
-              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">{l("currentConfig")}</p>
-              {[
-                [l("configColor"), l(color.labelKey)],
-                [l("configSpacing"), l(spacing.labelKey)],
-                [l("configFont"), l(font.labelKey)],
-              ].map(([key, val]) => (
-                <div key={key} className="flex justify-between">
-                  <p className="text-sm text-muted-foreground">{key}</p>
-                  <p className="text-sm font-semibold text-foreground">{val}</p>
-                </div>
-              ))}
+            <div className="bg-primary/5 rounded-3xl border border-primary/10 p-6 space-y-3">
+              <p className="text-xs font-bold text-primary uppercase tracking-widest">{l("currentConfig")}</p>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  [l("configColor"), l(color.labelKey)],
+                  [l("configSpacing"), l(spacing.labelKey)],
+                  [l("configFont"), l(fontFamily.labelKey)],
+                  [l("configFontWeight"), l(fontWeight.labelKey)],
+                ].map(([key, val]) => (
+                  <div key={key}>
+                    <p className="text-[10px] text-muted-foreground uppercase">{key}</p>
+                    <p className="text-sm font-bold text-foreground">{val}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </motion.div>
 
@@ -205,17 +278,19 @@ export function PlaygroundSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="flex-shrink-0"
+            className="flex-shrink-0 lg:sticky lg:top-24"
           >
             <PhoneMockup size="lg">
               <LivePreviewScreen
                 primaryColor={color.value}
-                pad={pad}
-                gap={gap}
-                rnd={rnd}
-                titleClass={font.title}
-                bodyClass={font.body}
-                btnClass={font.btn}
+                pad={spacing.px}
+                gap={spacing.gap}
+                rnd={spacing.rounding}
+                fontFamilyClass={fontFamily.class}
+                fontWeightClass={fontWeight.class}
+                titleSize={titleBaseSize}
+                bodySize={bodyBaseSize}
+                btnSize={btnBaseSize}
                 lang={lang}
                 copy={copy}
               />
@@ -232,14 +307,28 @@ interface LivePreviewProps {
   pad: number
   gap: number
   rnd: string
-  titleClass: string
-  bodyClass: string
-  btnClass: string
+  fontFamilyClass: string
+  fontWeightClass: string
+  titleSize: number
+  bodySize: number
+  btnSize: number
   lang: "en" | "es"
   copy: typeof copy
 }
 
-function LivePreviewScreen({ primaryColor, pad, gap, rnd, titleClass, bodyClass, btnClass, lang, copy }: LivePreviewProps) {
+function LivePreviewScreen({
+  primaryColor,
+  pad,
+  gap,
+  rnd,
+  fontFamilyClass,
+  fontWeightClass,
+  titleSize,
+  bodySize,
+  btnSize,
+  lang,
+  copy,
+}: LivePreviewProps) {
   const l = (key: keyof typeof copy) => copy[key][lang]
   const p = `${pad / 4}rem`
   const g = `${gap / 4}rem`
@@ -254,18 +343,25 @@ function LivePreviewScreen({ primaryColor, pad, gap, rnd, titleClass, bodyClass,
   const todoItems = ["task1", "task2", "task3"] as const
   const navItems = ["homeNav", "tasksNav", "meNav"] as const
 
+  const textStyle = {
+    fontFamily: fontFamilyClass === "font-serif" ? "serif" : fontFamilyClass === "font-mono" ? "monospace" : "sans-serif",
+  }
+
   return (
-    <div className="h-full bg-white flex flex-col overflow-hidden transition-all duration-300">
+    <div
+      className={`h-full bg-white flex flex-col overflow-hidden transition-all duration-300 ${fontFamilyClass}`}
+      style={textStyle}
+    >
       {/* Header */}
       <div style={{ padding: p, paddingTop: "1.5rem", paddingBottom: p }}>
         <div className="flex items-center justify-between">
           <div>
-            <p className={`${bodyClass} text-gray-400 transition-all`}>{l("dashboard")}</p>
-            <p className={`${titleClass} font-bold text-gray-900 transition-all`}>{l("myApp")}</p>
+            <p className="text-gray-400 transition-all" style={{ fontSize: `${bodySize * 0.8}px` }}>{l("dashboard")}</p>
+            <p className={`font-bold text-gray-900 transition-all ${fontWeightClass}`} style={{ fontSize: `${titleSize}px` }}>{l("myApp")}</p>
           </div>
           <div
-            className="w-7 h-7 rounded-full flex items-center justify-center text-white text-[9px] font-bold"
-            style={{ background: primaryColor }}
+            className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold"
+            style={{ background: primaryColor, fontSize: "10px" }}
           >
             JD
           </div>
@@ -275,12 +371,16 @@ function LivePreviewScreen({ primaryColor, pad, gap, rnd, titleClass, bodyClass,
       {/* Hero card */}
       <div style={{ marginLeft: p, marginRight: p, marginBottom: g }}>
         <div className={`${rnd} text-white transition-all duration-300`} style={{ padding: p, background: primaryColor }}>
-          <p className={`${bodyClass} opacity-80 mb-0.5 transition-all`}>{l("activeProject")}</p>
-          <p className={`${titleClass} font-bold transition-all`}>{l("sprint")}</p>
-          <div className="mt-2 bg-white/20 rounded-full h-1">
-            <div className="bg-white h-1 rounded-full w-3/5" />
+          <p className="opacity-80 mb-0.5 transition-all" style={{ fontSize: `${bodySize}px` }}>{l("activeProject")}</p>
+          <p className={`font-bold transition-all ${fontWeightClass}`} style={{ fontSize: `${titleSize}px` }}>{l("sprint")}</p>
+          <div className="mt-3 bg-white/20 rounded-full h-1.5 overflow-hidden">
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: "60%" }}
+              className="bg-white h-full"
+            />
           </div>
-          <p className={`${bodyClass} opacity-70 mt-0.5 transition-all`}>{l("complete")}</p>
+          <p className="opacity-70 mt-1 transition-all" style={{ fontSize: `${bodySize * 0.9}px` }}>{l("complete")}</p>
         </div>
       </div>
 
@@ -289,15 +389,15 @@ function LivePreviewScreen({ primaryColor, pad, gap, rnd, titleClass, bodyClass,
         <div className="grid grid-cols-2" style={{ gap: `${gap / 8}rem` }}>
           {statCards.map(({ labelKey, val }) => (
             <div key={labelKey} className={`bg-gray-50 ${rnd} transition-all`} style={{ padding: `${pad / 8}rem` }}>
-              <p className={`${bodyClass} text-gray-400 transition-all`}>{l(labelKey)}</p>
-              <p className={`${titleClass} font-bold text-gray-900 transition-all`}>{val}</p>
+              <p className="text-gray-400 transition-all" style={{ fontSize: `${bodySize * 0.9}px` }}>{l(labelKey)}</p>
+              <p className={`font-bold text-gray-900 transition-all ${fontWeightClass}`} style={{ fontSize: `${titleSize * 0.9}px` }}>{val}</p>
             </div>
           ))}
         </div>
       </div>
 
       {/* Task list */}
-      <div style={{ marginLeft: p, marginRight: p, marginBottom: g }} className="space-y-1.5">
+      <div style={{ marginLeft: p, marginRight: p, marginBottom: g }} className="space-y-2">
         {todoItems.map((key, i) => (
           <motion.div
             key={key}
@@ -306,10 +406,10 @@ function LivePreviewScreen({ primaryColor, pad, gap, rnd, titleClass, bodyClass,
             style={{ padding: `${pad / 8}rem` }}
           >
             <div
-              className="w-3.5 h-3.5 rounded flex-shrink-0"
-              style={{ background: primaryColor, opacity: i === 0 ? 1 : 0.4 }}
+              className="w-4 h-4 rounded-md flex-shrink-0"
+              style={{ background: primaryColor, opacity: i === 0 ? 1 : 0.2 }}
             />
-            <p className={`${bodyClass} text-gray-700 transition-all flex-1`}>{l(key)}</p>
+            <p className="text-gray-700 transition-all flex-1" style={{ fontSize: `${bodySize}px` }}>{l(key)}</p>
           </motion.div>
         ))}
       </div>
@@ -321,25 +421,29 @@ function LivePreviewScreen({ primaryColor, pad, gap, rnd, titleClass, bodyClass,
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className={`w-full text-white font-semibold ${rnd} ${btnClass} transition-all duration-300`}
-          style={{ background: primaryColor, padding: `${pad / 8}rem` }}
+          className={`w-full text-white font-bold ${rnd} transition-all duration-300 shadow-lg`}
+          style={{ background: primaryColor, padding: `${pad / 8}rem`, fontSize: `${btnSize}px` }}
         >
           {l("continueCta")}
         </motion.button>
       </div>
 
       {/* Bottom nav */}
-      <div className="border-t border-gray-100 flex justify-around py-2">
+      <div className="border-t border-gray-100 flex justify-around py-3">
         {navItems.map((key, i) => (
           <motion.div
             key={key}
             whileHover={{ y: -2 }}
-            className="flex flex-col items-center gap-0.5"
+            className="flex flex-col items-center gap-1"
           >
-            <div className="w-4 h-4 rounded" style={{ background: i === 0 ? primaryColor : "#e5e7eb" }} />
+            <div className="w-5 h-5 rounded-lg" style={{ background: i === 0 ? primaryColor : "#f3f4f6" }} />
             <p
-              className={`text-[7px] transition-all ${i === 0 ? "font-semibold" : "text-gray-400"}`}
-              style={i === 0 ? { color: primaryColor } : {}}
+              className="transition-all"
+              style={{
+                fontSize: `${bodySize * 0.8}px`,
+                color: i === 0 ? primaryColor : "#9ca3af",
+                fontWeight: i === 0 ? "bold" : "normal",
+              }}
             >
               {l(key)}
             </p>
