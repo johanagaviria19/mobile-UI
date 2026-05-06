@@ -21,6 +21,23 @@ const copy = {
   configSpacing: { en: "Spacing", es: "Espaciado" },
   configFont: { en: "Font", es: "Fuente" },
   configFontWeight: { en: "Weight", es: "Peso" },
+  configSimplicity: { en: "Simplicity", es: "Simplicidad" },
+  configFeedback: { en: "Touch Feedback", es: "Feedback Tactil" },
+  configAccessibility: { en: "Contrast Check", es: "Contraste (Accesibilidad)" },
+  configNavigation: { en: "Navigation Pattern", es: "Patron de Navegacion" },
+  configSpeed: { en: "App Speed", es: "Velocidad de App" },
+  // Simplicity options
+  simplicityFull: { en: "Full UI", es: "UI Completa" },
+  simplicityEssential: { en: "Essential Only", es: "Solo Esencial" },
+  // Feedback options
+  feedbackNone: { en: "None", es: "Ninguno" },
+  feedbackHaptic: { en: "Haptic/Visual", es: "Haptico/Visual" },
+  // Navigation options
+  navBottom: { en: "Bottom Bar", es: "Barra Inferior" },
+  navTop: { en: "Top Menu", es: "Menu Superior" },
+  // Speed options
+  speedFast: { en: "Instant", es: "Instantaneo" },
+  speedSlow: { en: "Loading (Slow)", es: "Carga (Lenta)" },
   // Color names
   colorBlue: { en: "Blue", es: "Azul" },
   colorPurple: { en: "Purple", es: "Morado" },
@@ -69,6 +86,11 @@ export function PlaygroundSection() {
   const [fontFamilyIdx, setFontFamilyIdx] = useState(0)
   const [fontScale, setFontScale] = useState(1)
   const [fontWeightIdx, setFontWeightIdx] = useState(1)
+  const [isEssential, setIsEssential] = useState(false)
+  const [hasFeedback, setHasFeedback] = useState(true)
+  const [isBottomNav, setIsBottomNav] = useState(true)
+  const [isSlow, setIsSlow] = useState(false)
+  const [showAccessibility, setShowAccessibility] = useState(false)
   const { lang } = useApp()
   const l = (key: keyof typeof copy) => copy[key][lang]
 
@@ -254,9 +276,11 @@ export function PlaygroundSection() {
             </div>
 
             {/* Config summary */}
-            <div className="bg-primary/5 rounded-3xl border border-primary/10 p-6 space-y-3">
+            <div className="bg-primary/5 rounded-3xl border border-primary/10 p-6 space-y-4">
               <p className="text-xs font-bold text-primary uppercase tracking-widest">{l("currentConfig")}</p>
-              <div className="grid grid-cols-2 gap-4">
+              
+              {/* Row 1: Visuals */}
+              <div className="grid grid-cols-2 gap-4 border-b border-primary/5 pb-4">
                 {[
                   [l("configColor"), l(color.labelKey)],
                   [l("configSpacing"), l(spacing.labelKey)],
@@ -268,6 +292,90 @@ export function PlaygroundSection() {
                     <p className="text-sm font-bold text-foreground">{val}</p>
                   </div>
                 ))}
+              </div>
+
+              {/* Row 2: Principles Switches */}
+              <div className="space-y-4">
+                <p className="text-[10px] font-bold text-primary uppercase tracking-wider">Mobile Principles</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {/* Simplicity */}
+                  <div className="flex items-center justify-between bg-card p-3 rounded-2xl border border-border">
+                    <div>
+                      <p className="text-[10px] text-muted-foreground uppercase">{l("configSimplicity")}</p>
+                      <p className="text-xs font-bold">{isEssential ? l("simplicityEssential") : l("simplicityFull")}</p>
+                    </div>
+                    <button 
+                      onClick={() => setIsEssential(!isEssential)}
+                      className={`w-10 h-5 rounded-full transition-colors relative ${isEssential ? "bg-primary" : "bg-muted"}`}
+                    >
+                      <div className={`absolute top-1 w-3 h-3 bg-white rounded-full transition-all ${isEssential ? "left-6" : "left-1"}`} />
+                    </button>
+                  </div>
+
+                  {/* Navigation */}
+                  <div className="flex items-center justify-between bg-card p-3 rounded-2xl border border-border">
+                    <div>
+                      <p className="text-[10px] text-muted-foreground uppercase">{l("configNavigation")}</p>
+                      <p className="text-xs font-bold">{isBottomNav ? l("navBottom") : l("navTop")}</p>
+                    </div>
+                    <button 
+                      onClick={() => setIsBottomNav(!isBottomNav)}
+                      className={`w-10 h-5 rounded-full transition-colors relative ${isBottomNav ? "bg-primary" : "bg-muted"}`}
+                    >
+                      <div className={`absolute top-1 w-3 h-3 bg-white rounded-full transition-all ${isBottomNav ? "left-6" : "left-1"}`} />
+                    </button>
+                  </div>
+
+                  {/* Speed */}
+                  <div className="flex items-center justify-between bg-card p-3 rounded-2xl border border-border">
+                    <div>
+                      <p className="text-[10px] text-muted-foreground uppercase">{l("configSpeed")}</p>
+                      <p className="text-xs font-bold">{isSlow ? l("speedSlow") : l("speedFast")}</p>
+                    </div>
+                    <button 
+                      onClick={() => setIsSlow(!isSlow)}
+                      className={`w-10 h-5 rounded-full transition-colors relative ${isSlow ? "bg-primary" : "bg-muted"}`}
+                    >
+                      <div className={`absolute top-1 w-3 h-3 bg-white rounded-full transition-all ${isSlow ? "left-6" : "left-1"}`} />
+                    </button>
+                  </div>
+
+                  {/* Feedback */}
+                  <div className="flex items-center justify-between bg-card p-3 rounded-2xl border border-border">
+                    <div>
+                      <p className="text-[10px] text-muted-foreground uppercase">{l("configFeedback")}</p>
+                      <p className="text-xs font-bold">{hasFeedback ? l("feedbackHaptic") : l("feedbackNone")}</p>
+                    </div>
+                    <button 
+                      onClick={() => setHasFeedback(!hasFeedback)}
+                      className={`w-10 h-5 rounded-full transition-colors relative ${hasFeedback ? "bg-primary" : "bg-muted"}`}
+                    >
+                      <div className={`absolute top-1 w-3 h-3 bg-white rounded-full transition-all ${hasFeedback ? "left-6" : "left-1"}`} />
+                    </button>
+                  </div>
+
+                  {/* Accessibility */}
+                  <div className="flex items-center justify-between bg-card p-3 rounded-2xl border border-border col-span-full">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="text-[10px] text-muted-foreground uppercase">{l("configAccessibility")}</p>
+                        <p className="text-xs font-bold">Contrast Checker</p>
+                      </div>
+                    </div>
+                    <button 
+                      onClick={() => setShowAccessibility(!showAccessibility)}
+                      className={`w-10 h-5 rounded-full transition-colors relative ${showAccessibility ? "bg-primary" : "bg-muted"}`}
+                    >
+                      <div className={`absolute top-1 w-3 h-3 bg-white rounded-full transition-all ${showAccessibility ? "left-6" : "left-1"}`} />
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -291,6 +399,11 @@ export function PlaygroundSection() {
                 titleSize={titleBaseSize}
                 bodySize={bodyBaseSize}
                 btnSize={btnBaseSize}
+                isEssential={isEssential}
+                hasFeedback={hasFeedback}
+                isBottomNav={isBottomNav}
+                isSlow={isSlow}
+                showAccessibility={showAccessibility}
                 lang={lang}
                 copy={copy}
               />
@@ -312,6 +425,11 @@ interface LivePreviewProps {
   titleSize: number
   bodySize: number
   btnSize: number
+  isEssential: boolean
+  hasFeedback: boolean
+  isBottomNav: boolean
+  isSlow: boolean
+  showAccessibility: boolean
   lang: "en" | "es"
   copy: typeof copy
 }
@@ -326,6 +444,11 @@ function LivePreviewScreen({
   titleSize,
   bodySize,
   btnSize,
+  isEssential,
+  hasFeedback,
+  isBottomNav,
+  isSlow,
+  showAccessibility,
   lang,
   copy,
 }: LivePreviewProps) {
@@ -336,22 +459,45 @@ function LivePreviewScreen({
   const statCards = [
     { labelKey: "tasks" as const, val: "12" },
     { labelKey: "done" as const, val: "7" },
-    { labelKey: "team" as const, val: "4" },
-    { labelKey: "days" as const, val: "3" },
+    ...(isEssential ? [] : [
+      { labelKey: "team" as const, val: "4" },
+      { labelKey: "days" as const, val: "3" },
+    ])
   ]
 
-  const todoItems = ["task1", "task2", "task3"] as const
+  const todoItems = isEssential ? ["task1"] : ["task1", "task2", "task3"]
   const navItems = ["homeNav", "tasksNav", "meNav"] as const
 
   const textStyle = {
     fontFamily: fontFamilyClass === "font-serif" ? "serif" : fontFamilyClass === "font-mono" ? "monospace" : "sans-serif",
   }
 
+  // Accessibility colors
+  const accessibilityBg = showAccessibility ? "#f3f4f6" : "white"
+  const accessibilityText = showAccessibility ? "#9ca3af" : "gray"
+
   return (
     <div
       className={`h-full bg-white flex flex-col overflow-hidden transition-all duration-300 ${fontFamilyClass}`}
-      style={textStyle}
+      style={{ ...textStyle, background: accessibilityBg }}
     >
+      {/* Top Nav (Simulated if isBottomNav is false) */}
+      {!isBottomNav && (
+        <div className="bg-gray-800 text-white p-2 flex justify-around text-[7px] uppercase font-bold tracking-widest">
+          {navItems.map(key => <span key={key}>{l(key)}</span>)}
+        </div>
+      )}
+
+      {/* Speed / Loading state */}
+      {isSlow && (
+        <div className="absolute inset-0 z-50 bg-white/80 flex items-center justify-center backdrop-blur-sm">
+          <div className="flex flex-col items-center gap-2">
+            <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+            <p className="text-[10px] font-bold text-primary">Optimizing UI...</p>
+          </div>
+        </div>
+      )}
+
       {/* Header */}
       <div style={{ padding: p, paddingTop: "1.5rem", paddingBottom: p }}>
         <div className="flex items-center justify-between">
@@ -368,9 +514,21 @@ function LivePreviewScreen({
         </div>
       </div>
 
+      {/* Accessibility Contrast Demo */}
+      {showAccessibility && (
+        <div className="mx-4 mb-4 p-2 bg-red-50 border border-red-100 rounded-lg text-[7px] text-red-400">
+          ⚠️ Low contrast detected on background
+        </div>
+      )}
+
       {/* Hero card */}
       <div style={{ marginLeft: p, marginRight: p, marginBottom: g }}>
-        <div className={`${rnd} text-white transition-all duration-300`} style={{ padding: p, background: primaryColor }}>
+        <motion.div 
+          whileHover={hasFeedback ? { scale: 1.02 } : {}}
+          whileTap={hasFeedback ? { scale: 0.98 } : {}}
+          className={`${rnd} text-white transition-all duration-300 shadow-lg`} 
+          style={{ padding: p, background: primaryColor }}
+        >
           <p className="opacity-80 mb-0.5 transition-all" style={{ fontSize: `${bodySize}px` }}>{l("activeProject")}</p>
           <p className={`font-bold transition-all ${fontWeightClass}`} style={{ fontSize: `${titleSize}px` }}>{l("sprint")}</p>
           <div className="mt-3 bg-white/20 rounded-full h-1.5 overflow-hidden">
@@ -381,7 +539,7 @@ function LivePreviewScreen({
             />
           </div>
           <p className="opacity-70 mt-1 transition-all" style={{ fontSize: `${bodySize * 0.9}px` }}>{l("complete")}</p>
-        </div>
+        </motion.div>
       </div>
 
       {/* Stat cards */}
@@ -401,7 +559,7 @@ function LivePreviewScreen({
         {todoItems.map((key, i) => (
           <motion.div
             key={key}
-            whileHover={{ x: 4 }}
+            whileHover={hasFeedback ? { x: 4 } : {}}
             className={`flex items-center gap-2 bg-gray-50 ${rnd} transition-all`}
             style={{ padding: `${pad / 8}rem` }}
           >
@@ -419,8 +577,8 @@ function LivePreviewScreen({
       {/* CTA */}
       <div style={{ margin: p }}>
         <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
+          whileHover={hasFeedback ? { scale: 1.02 } : {}}
+          whileTap={hasFeedback ? { scale: 0.98 } : {}}
           className={`w-full text-white font-bold ${rnd} transition-all duration-300 shadow-lg`}
           style={{ background: primaryColor, padding: `${pad / 8}rem`, fontSize: `${btnSize}px` }}
         >
@@ -429,27 +587,29 @@ function LivePreviewScreen({
       </div>
 
       {/* Bottom nav */}
-      <div className="border-t border-gray-100 flex justify-around py-3">
-        {navItems.map((key, i) => (
-          <motion.div
-            key={key}
-            whileHover={{ y: -2 }}
-            className="flex flex-col items-center gap-1"
-          >
-            <div className="w-5 h-5 rounded-lg" style={{ background: i === 0 ? primaryColor : "#f3f4f6" }} />
-            <p
-              className="transition-all"
-              style={{
-                fontSize: `${bodySize * 0.8}px`,
-                color: i === 0 ? primaryColor : "#9ca3af",
-                fontWeight: i === 0 ? "bold" : "normal",
-              }}
+      {isBottomNav && (
+        <div className="border-t border-gray-100 flex justify-around py-3">
+          {navItems.map((key, i) => (
+            <motion.div
+              key={key}
+              whileHover={hasFeedback ? { y: -2 } : {}}
+              className="flex flex-col items-center gap-1"
             >
-              {l(key)}
-            </p>
-          </motion.div>
-        ))}
-      </div>
+              <div className="w-5 h-5 rounded-lg" style={{ background: i === 0 ? primaryColor : "#f3f4f6" }} />
+              <p
+                className="transition-all"
+                style={{
+                  fontSize: `${bodySize * 0.8}px`,
+                  color: i === 0 ? primaryColor : "#9ca3af",
+                  fontWeight: i === 0 ? "bold" : "normal",
+                }}
+              >
+                {l(key)}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }
