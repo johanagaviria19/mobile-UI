@@ -9,93 +9,90 @@ const copy = {
   section: { en: "Section 03", es: "Seccion 03" },
   title: { en: "Best Practices", es: "Buenas Practicas" },
   subtitle: {
-    en: "Five foundational pillars that elevate any mobile UI from functional to exceptional.",
-    es: "Cinco pilares fundamentales que elevan cualquier UI movil de funcional a excepcional.",
+    en: "Ten foundational pillars that elevate any mobile UI from functional to exceptional.",
+    es: "Diez pilares fundamentales que elevan cualquier UI movil de funcional a excepcional.",
   },
   seeExample: { en: "See live example in the mockup", es: "Ver ejemplo en el mockup" },
 
   // Tab labels
-  colorsLabel: { en: "Colors", es: "Colores" },
-  typographyLabel: { en: "Typography", es: "Tipografia" },
-  spacingLabel: { en: "Spacing", es: "Espaciado" },
+  simplicityLabel: { en: "Simplicity", es: "Simplicidad" },
   navigationLabel: { en: "Navigation", es: "Navegacion" },
-  iconsLabel: { en: "Icons", es: "Iconos" },
+  touchLabel: { en: "Touch-friendly", es: "Tactil" },
+  speedLabel: { en: "Speed", es: "Velocidad" },
+  consistencyLabel: { en: "Consistency", es: "Consistencia" },
+  hierarchyLabel: { en: "Hierarchy", es: "Jerarquia" },
+  accessibilityLabel: { en: "Accessibility", es: "Accesibilidad" },
+  feedbackLabel: { en: "Feedback", es: "Feedback" },
+  responsiveLabel: { en: "Responsive", es: "Adaptable" },
+  testingLabel: { en: "Testing", es: "Pruebas" },
 
   // Tab titles & descs
-  colorsTitle: { en: "Colors & Contrast", es: "Colores y Contraste" },
-  colorsDesc: {
-    en: "Use a limited palette with sufficient contrast ratios (4.5:1 minimum) for accessibility and clarity.",
-    es: "Usa una paleta limitada con relaciones de contraste suficientes (minimo 4.5:1) para accesibilidad y claridad.",
+  simplicityTitle: { en: "Simplicity Above All", es: "Simplicidad ante todo" },
+  simplicityDesc: {
+    en: "Avoid cluttered screens. Every element should have a clear purpose. Less is more.",
+    es: "Evita pantallas saturadas. Cada elemento debe tener un proposito claro. Menos es mas.",
   },
-  typographyTitle: { en: "Typography", es: "Tipografia" },
-  typographyDesc: {
-    en: "Establish clear text hierarchy with 2-3 font sizes. Use readable sizes (minimum 14px) and comfortable line height.",
-    es: "Establece una jerarquia de texto clara con 2-3 tamanos de fuente. Usa tamanos legibles (minimo 14px) y altura de linea comoda.",
-  },
-  spacingTitle: { en: "Spacing", es: "Espaciado" },
-  spacingDesc: {
-    en: "Generous whitespace reduces visual noise and makes content breathe. Consistent spacing creates rhythm.",
-    es: "El espacio en blanco generoso reduce el ruido visual y hace que el contenido respire. El espaciado consistente crea ritmo.",
-  },
-  navigationTitle: { en: "Navigation", es: "Navegacion" },
+  navigationTitle: { en: "Clear Navigation", es: "Navegacion clara" },
   navigationDesc: {
-    en: "Bottom navigation is thumb-friendly and ideal for primary sections. Keep it to 3-5 items.",
-    es: "La navegacion inferior es comoda para el pulgar e ideal para secciones principales. Mantenla en 3-5 elementos.",
+    en: "Users should always know where they are, where to go, and how to get back.",
+    es: "El usuario debe saber siempre: donde esta, a donde puede ir y como volver.",
   },
-  iconsTitle: { en: "Iconography", es: "Iconografia" },
-  iconsDesc: {
-    en: "Use universally recognizable icons with labels. Avoid ambiguous metaphors that confuse users.",
-    es: "Usa iconos universalmente reconocibles con etiquetas. Evita metaforas ambiguas que confundan a los usuarios.",
+  touchTitle: { en: "Touch-friendly Design", es: "Diseno tactil" },
+  touchDesc: {
+    en: "Everything is tactile. Use large buttons (min 44px) and enough spacing between items.",
+    es: "Recuerda que no hay mouse, todo es tactil. Botones grandes (minimo ~44px) y espacio entre elementos.",
+  },
+  speedTitle: { en: "Performance & Speed", es: "Rendimiento y velocidad" },
+  speedDesc: {
+    en: "A slow app is a lost user. Optimize images and use smart loading states.",
+    es: "Una app lenta es un usuario perdido. Optimiza imagenes y usa carga progresiva inteligente.",
+  },
+  consistencyTitle: { en: "Visual Consistency", es: "Consistencia visual" },
+  consistencyDesc: {
+    en: "Keep a uniform style: coherent colors, consistent typography, and same logic for buttons.",
+    es: "Manten un estilo uniforme: colores coherentes, tipografia consistente y misma logica en botones.",
+  },
+  hierarchyTitle: { en: "Visual Hierarchy", es: "Jerarquia visual" },
+  hierarchyDesc: {
+    en: "Guide the user's eye: use size, color, and contrast to indicate importance.",
+    es: "Guia la mirada del usuario: usa tamano, color y contraste para indicar importancia.",
+  },
+  accessibilityTitle: { en: "Accessibility", es: "Accesibilidad" },
+  accessibilityDesc: {
+    en: "Design for everyone: good contrast, readable text, and screen reader support.",
+    es: "Disena para todos: buen contraste, texto legible y soporte para lectores de pantalla.",
+  },
+  feedbackTitle: { en: "Immediate Feedback", es: "Feedback inmediato" },
+  feedbackDesc: {
+    en: "Users should know what's happening: confirmed actions, animations, and loaders.",
+    es: "El usuario debe saber que esta pasando: animaciones al tocar y mensajes de confirmacion.",
+  },
+  responsiveTitle: { en: "Responsive Design", es: "Diseno adaptable" },
+  responsiveDesc: {
+    en: "Your app must look great on different screen sizes and orientations.",
+    es: "Tu app debe verse bien en diferentes tamanos de pantalla y orientaciones.",
+  },
+  testingTitle: { en: "User Testing", es: "Pruebas con usuarios" },
+  testingDesc: {
+    en: "Never design 'by eye'. Test with real users, observe confusion, and iterate.",
+    es: "Nunca disenies solo 'a ojo'. Testea con usuarios reales, observa donde se confunden e itera.",
   },
 
-  // Colors screen
-  primaryAction: { en: "Primary action", es: "Accion principal" },
-  getStarted: { en: "Get Started - high contrast", es: "Comenzar - alto contraste" },
-  secondaryAction: { en: "Secondary action", es: "Accion secundaria" },
-  learnMore: { en: "Learn More", es: "Aprender Mas" },
-  errorAction: { en: "Error / Destructive", es: "Error / Destructivo" },
-  deleteAccount: { en: "Delete Account", es: "Eliminar Cuenta" },
-  contrastCheck: { en: "Contrast check", es: "Verificacion de contraste" },
-  poorContrast: { en: "Poor contrast", es: "Bajo contraste" },
-  goodContrast: { en: "Good contrast", es: "Buen contraste" },
-
-  // Typography screen
-  typeHierarchy: { en: "Type Hierarchy", es: "Jerarquia de Texto" },
-  h1Display: { en: "H1 - Display", es: "H1 - Titulo principal" },
-  h1Text: { en: "Design Matters", es: "El Diseno Importa" },
-  h2Heading: { en: "H2 - Heading", es: "H2 - Encabezado" },
-  h2Text: { en: "Section Title Here", es: "Titulo de Seccion Aqui" },
-  h3Sub: { en: "H3 - Subheading", es: "H3 - Subtitulo" },
-  h3Text: { en: "Card or item label", es: "Etiqueta de tarjeta o item" },
-  bodyRegular: { en: "Body - Regular", es: "Cuerpo - Regular" },
-  bodyText: {
-    en: "This is regular body text used for descriptions and general content that users read through.",
-    es: "Este es el texto de cuerpo regular usado para descripciones y contenido general que los usuarios leen.",
-  },
-  captionSmall: { en: "Caption - Small", es: "Leyenda - Pequena" },
-  captionText: { en: "Last updated · 2 min read", es: "Ultima actualizacion · 2 min de lectura" },
-
-  // Spacing screen
-  spacingDemo: { en: "Spacing Demo", es: "Demo de Espaciado" },
-  cramped: { en: "Cramped - hard to read", es: "Apretado - dificil de leer" },
-  wellSpaced: { en: "Well-spaced - easy to read", es: "Bien espaciado - facil de leer" },
-  itemA: { en: "Item A", es: "Elemento A" },
-  itemB: { en: "Item B", es: "Elemento B" },
-  itemC: { en: "Item C", es: "Elemento C" },
-
-  // Navigation screen
-  navPatterns: { en: "Navigation Patterns", es: "Patrones de Navegacion" },
-  topMenu: { en: "Top menu bar (harder to reach)", es: "Barra superior (mas dificil de alcanzar)" },
-  thumbStretch: { en: "Thumb must stretch to reach top items", es: "El pulgar debe estirarse para llegar a los items superiores" },
-  bottomNav: { en: "Bottom navigation (thumb-friendly)", es: "Navegacion inferior (comoda para el pulgar)" },
-  navHome: { en: "Home", es: "Inicio" },
-  navExplore: { en: "Explore", es: "Explorar" },
-  navProfile: { en: "Profile", es: "Perfil" },
-  navMore: { en: "More", es: "Mas" },
-  navSearch: { en: "Search", es: "Buscar" },
-  navSaved: { en: "Saved", es: "Guardado" },
-
-  // Icons screen
+  // Mockup internal texts
+  essential: { en: "Only Essential", es: "Solo lo esencial" },
+  lessButtons: { en: "Fewer buttons = Less confusion", es: "Menos botones = Menos confusion" },
+  thumbZone: { en: "Thumb Zone", es: "Zona del pulgar" },
+  easyReach: { en: "Easy to reach", es: "Facil de alcanzar" },
+  loading: { en: "Loading content...", es: "Cargando contenido..." },
+  confirmed: { en: "Message sent!", es: "Mensaje enviado!" },
+  testing: { en: "User A clicked here", es: "Usuario A hizo clic aqui" },
+  
+  // Reusing some old keys for consistency or creating new ones as needed
+  colorsTitle: { en: "Colors & Contrast", es: "Colores y Contraste" },
+  typographyTitle: { en: "Typography", es: "Tipografia" },
+  spacingTitle: { en: "Spacing", es: "Espaciado" },
+  navigationLabel: { en: "Navigation", es: "Navegacion" },
+  iconsLabel: { en: "Icons", es: "Iconos" },
   iconClarity: { en: "Icon Clarity", es: "Claridad de Iconos" },
   clearIcons: { en: "Clear icons", es: "Iconos claros" },
   confusingIcons: { en: "Confusing icons", es: "Iconos confusos" },
@@ -106,56 +103,38 @@ const copy = {
     en: "Always pair icons with labels for clarity.",
     es: "Siempre acompana los iconos con etiquetas para mayor claridad.",
   },
+  navHome: { en: "Home", es: "Inicio" },
+  navExplore: { en: "Explore", es: "Explorar" },
+  navProfile: { en: "Profile", es: "Perfil" },
+  navMore: { en: "More", es: "Mas" },
+  navSearch: { en: "Search", es: "Buscar" },
+  navSaved: { en: "Saved", es: "Guardado" },
 }
 
 export function BestPracticesSection() {
-  const [active, setActive] = useState("colors")
+  const [active, setActive] = useState("simplicity")
   const { lang } = useApp()
   const l = (key: keyof typeof copy) => copy[key][lang]
 
   const practices = [
     {
-      id: "colors",
-      label: l("colorsLabel"),
+      id: "simplicity",
+      label: l("simplicityLabel"),
       icon: (
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 17v-10l8 4" />
         </svg>
       ),
-      title: l("colorsTitle"),
-      desc: l("colorsDesc"),
-      screen: <ColorsScreen lang={lang} copy={copy} />,
-    },
-    {
-      id: "typography",
-      label: l("typographyLabel"),
-      icon: (
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h8m-8 6h16" />
-        </svg>
-      ),
-      title: l("typographyTitle"),
-      desc: l("typographyDesc"),
-      screen: <TypographyScreen lang={lang} copy={copy} />,
-    },
-    {
-      id: "spacing",
-      label: l("spacingLabel"),
-      icon: (
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8h16M4 16h16" />
-        </svg>
-      ),
-      title: l("spacingTitle"),
-      desc: l("spacingDesc"),
-      screen: <SpacingScreen lang={lang} copy={copy} />,
+      title: l("simplicityTitle"),
+      desc: l("simplicityDesc"),
+      screen: <SimplicityScreen lang={lang} copy={copy} />,
     },
     {
       id: "navigation",
       label: l("navigationLabel"),
       icon: (
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A2 2 0 013 15.487V6.512a2 2 0 011.171-1.815l5.447-2.724a2 2 0 011.764 0l5.447 2.724A2 2 0 0118 6.512v8.975a2 2 0 01-1.171 1.815l-5.447 2.724a2 2 0 01-1.764 0z" />
         </svg>
       ),
       title: l("navigationTitle"),
@@ -163,16 +142,100 @@ export function BestPracticesSection() {
       screen: <NavigationScreen lang={lang} copy={copy} />,
     },
     {
-      id: "icons",
-      label: l("iconsLabel"),
+      id: "touch",
+      label: l("touchLabel"),
       icon: (
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3l14 9-14 9V3z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
         </svg>
       ),
-      title: l("iconsTitle"),
-      desc: l("iconsDesc"),
-      screen: <IconScreen lang={lang} copy={copy} />,
+      title: l("touchTitle"),
+      desc: l("touchDesc"),
+      screen: <TouchScreen lang={lang} copy={copy} />,
+    },
+    {
+      id: "speed",
+      label: l("speedLabel"),
+      icon: (
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      ),
+      title: l("speedTitle"),
+      desc: l("speedDesc"),
+      screen: <SpeedScreen lang={lang} copy={copy} />,
+    },
+    {
+      id: "consistency",
+      label: l("consistencyLabel"),
+      icon: (
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+        </svg>
+      ),
+      title: l("consistencyTitle"),
+      desc: l("consistencyDesc"),
+      screen: <ConsistencyScreen lang={lang} copy={copy} />,
+    },
+    {
+      id: "hierarchy",
+      label: l("hierarchyLabel"),
+      icon: (
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12" />
+        </svg>
+      ),
+      title: l("hierarchyTitle"),
+      desc: l("hierarchyDesc"),
+      screen: <HierarchyScreen lang={lang} copy={copy} />,
+    },
+    {
+      id: "accessibility",
+      label: l("accessibilityLabel"),
+      icon: (
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+        </svg>
+      ),
+      title: l("accessibilityTitle"),
+      desc: l("accessibilityDesc"),
+      screen: <AccessibilityScreen lang={lang} copy={copy} />,
+    },
+    {
+      id: "feedback",
+      label: l("feedbackLabel"),
+      icon: (
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+        </svg>
+      ),
+      title: l("feedbackTitle"),
+      desc: l("feedbackDesc"),
+      screen: <FeedbackScreen lang={lang} copy={copy} />,
+    },
+    {
+      id: "responsive",
+      label: l("responsiveLabel"),
+      icon: (
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+        </svg>
+      ),
+      title: l("responsiveTitle"),
+      desc: l("responsiveDesc"),
+      screen: <ResponsiveScreen lang={lang} copy={copy} />,
+    },
+    {
+      id: "testing",
+      label: l("testingLabel"),
+      icon: (
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+        </svg>
+      ),
+      title: l("testingTitle"),
+      desc: l("testingDesc"),
+      screen: <TestingScreen lang={lang} copy={copy} />,
     },
   ]
 
@@ -268,106 +331,299 @@ export function BestPracticesSection() {
 
 /* ---- Sub screens ---- */
 
+function SimplicityScreen({ lang, copy }: { lang: "en" | "es"; copy: typeof copy }) {
+  const l = (key: keyof typeof copy) => copy[key][lang]
+  return (
+    <div className="h-full bg-white p-4 flex flex-col gap-4 overflow-hidden">
+      <div className="flex items-center gap-2 mb-2">
+        <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <p className="text-xs font-bold text-gray-800">{l("essential")}</p>
+      </div>
+      <div className="space-y-3">
+        <div className="h-24 bg-gray-50 rounded-2xl border border-dashed border-gray-200 flex items-center justify-center">
+          <p className="text-[10px] text-gray-400">Content Area</p>
+        </div>
+        <button className="w-full py-3 bg-blue-600 text-white rounded-xl text-[10px] font-bold shadow-lg shadow-blue-200">
+          Primary Action
+        </button>
+        <p className="text-[9px] text-center text-gray-400">{l("lessButtons")}</p>
+      </div>
+    </div>
+  )
+}
+
+function TouchScreen({ lang, copy }: { lang: "en" | "es"; copy: typeof copy }) {
+  const l = (key: keyof typeof copy) => copy[key][lang]
+  return (
+    <div className="h-full bg-white p-4 flex flex-col overflow-hidden">
+      <p className="text-[10px] font-bold text-gray-800 mb-6">{l("touchTitle")}</p>
+      <div className="flex-1 relative">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-48 h-48 bg-blue-50 rounded-full opacity-50 flex items-center justify-center">
+          <div className="w-32 h-32 bg-blue-100 rounded-full flex items-center justify-center">
+            <p className="text-[10px] font-bold text-blue-600">{l("thumbZone")}</p>
+          </div>
+        </div>
+        <div className="space-y-3 relative z-10">
+          <button className="w-full h-12 bg-white border-2 border-gray-100 rounded-2xl flex items-center px-4 gap-3 hover:border-blue-400 transition-colors">
+            <div className="w-6 h-6 bg-gray-100 rounded-lg" />
+            <p className="text-[10px] font-medium text-gray-600">{l("easyReach")}</p>
+          </button>
+          <button className="w-full h-12 bg-white border-2 border-gray-100 rounded-2xl flex items-center px-4 gap-3 hover:border-blue-400 transition-colors">
+            <div className="w-6 h-6 bg-gray-100 rounded-lg" />
+            <p className="text-[10px] font-medium text-gray-600">{l("easyReach")}</p>
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function SpeedScreen({ lang, copy }: { lang: "en" | "es"; copy: typeof copy }) {
+  const l = (key: keyof typeof copy) => copy[key][lang]
+  return (
+    <div className="h-full bg-white p-4 flex flex-col gap-4 overflow-hidden">
+      <div className="flex justify-between items-center">
+        <div className="w-20 h-4 bg-gray-100 rounded-full" />
+        <div className="w-8 h-8 rounded-full bg-gray-100" />
+      </div>
+      <div className="space-y-4">
+        <div className="h-32 bg-gray-50 rounded-2xl overflow-hidden relative">
+          <motion.div
+            animate={{ x: ["0%", "100%"] }}
+            transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent w-1/2"
+          />
+        </div>
+        <div className="space-y-2">
+          <div className="h-3 bg-gray-100 rounded-full w-3/4" />
+          <div className="h-3 bg-gray-100 rounded-full w-1/2" />
+        </div>
+        <div className="flex items-center gap-3 text-blue-600">
+          <div className="w-4 h-4 border-2 border-blue-600 border-t-transparent rounded-full animate-spin" />
+          <p className="text-[9px] font-bold">{l("loading")}</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function ConsistencyScreen({ lang, copy }: { lang: "en" | "es"; copy: typeof copy }) {
+  const l = (key: keyof typeof copy) => copy[key][lang]
+  return (
+    <div className="h-full bg-white p-4 flex flex-col gap-6 overflow-hidden">
+      <div className="space-y-2">
+        <p className="text-[8px] text-gray-400 uppercase font-bold">Buttons</p>
+        <div className="flex gap-2">
+          <button className="flex-1 py-2 bg-blue-600 text-white rounded-lg text-[8px] font-bold">Action</button>
+          <button className="flex-1 py-2 bg-blue-600 text-white rounded-lg text-[8px] font-bold">Action</button>
+        </div>
+      </div>
+      <div className="space-y-2">
+        <p className="text-[8px] text-gray-400 uppercase font-bold">Inputs</p>
+        <div className="h-8 bg-gray-50 border border-gray-200 rounded-lg" />
+        <div className="h-8 bg-gray-50 border border-gray-200 rounded-lg" />
+      </div>
+      <div className="space-y-2">
+        <p className="text-[8px] text-gray-400 uppercase font-bold">Cards</p>
+        <div className="p-2 bg-white border border-gray-100 rounded-xl shadow-sm">
+          <div className="w-1/2 h-2 bg-gray-200 rounded-full" />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function HierarchyScreen({ lang, copy }: { lang: "en" | "es"; copy: typeof copy }) {
+  const l = (key: keyof typeof copy) => copy[key][lang]
+  return (
+    <div className="h-full bg-white p-5 flex flex-col gap-4 overflow-hidden">
+      <div>
+        <p className="text-2xl font-bold text-gray-900 leading-tight">Important Title</p>
+        <p className="text-xs text-gray-500 mt-1">Secondary information or subtitle</p>
+      </div>
+      <div className="p-4 bg-blue-600 rounded-2xl text-white shadow-xl shadow-blue-100">
+        <p className="text-[10px] font-bold">Main Call to Action</p>
+        <p className="text-[8px] opacity-80 mt-1">This card stands out immediately</p>
+      </div>
+      <div className="space-y-2">
+        {[1, 2, 3].map(i => (
+          <div key={i} className="flex items-center gap-3">
+            <div className="w-2 h-2 rounded-full bg-gray-200" />
+            <div className="h-2 bg-gray-100 rounded-full flex-1" />
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function AccessibilityScreen({ lang, copy }: { lang: "en" | "es"; copy: typeof copy }) {
+  const l = (key: keyof typeof copy) => copy[key][lang]
+  return (
+    <div className="h-full bg-white p-4 flex flex-col gap-4 overflow-hidden">
+      <div className="space-y-2">
+        <p className="text-[8px] text-gray-400 font-bold uppercase">Contrast Check</p>
+        <div className="flex gap-2">
+          <div className="flex-1 h-12 bg-blue-600 rounded-xl flex items-center justify-center">
+            <p className="text-[10px] text-white font-bold">AAA Pass</p>
+          </div>
+          <div className="flex-1 h-12 bg-gray-50 border border-gray-200 rounded-xl flex items-center justify-center">
+            <p className="text-[10px] text-gray-300">Fail</p>
+          </div>
+        </div>
+      </div>
+      <div className="space-y-2">
+        <p className="text-[8px] text-gray-400 font-bold uppercase">Text Size</p>
+        <p className="text-sm text-gray-800">Minimum readable size: 14px</p>
+        <p className="text-[10px] text-gray-400 italic">Avoid very small text (under 12px)</p>
+      </div>
+      <div className="mt-4 p-3 bg-gray-900 rounded-xl flex items-center gap-3">
+        <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+        </svg>
+        <p className="text-[8px] text-white font-mono">Screen reader active</p>
+      </div>
+    </div>
+  )
+}
+
+function FeedbackScreen({ lang, copy }: { lang: "en" | "es"; copy: typeof copy }) {
+  const l = (key: keyof typeof copy) => copy[key][lang]
+  return (
+    <div className="h-full bg-white p-4 flex flex-col items-center justify-center gap-6 overflow-hidden">
+      <motion.div
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center text-green-600"
+      >
+        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+        </svg>
+      </motion.div>
+      <div className="text-center">
+        <p className="text-sm font-bold text-gray-800">{l("confirmed")}</p>
+        <p className="text-[10px] text-gray-400 mt-1">Feedback gives users confidence</p>
+      </div>
+      <button className="px-6 py-2 bg-gray-100 rounded-full text-[9px] font-bold text-gray-600">
+        Dismiss
+      </button>
+    </div>
+  )
+}
+
+function ResponsiveScreen({ lang, copy }: { lang: "en" | "es"; copy: typeof copy }) {
+  const l = (key: keyof typeof copy) => copy[key][lang]
+  return (
+    <div className="h-full bg-white flex flex-col overflow-hidden">
+      <div className="p-4 border-b border-gray-100 bg-gray-50 flex justify-between items-center">
+        <div className="w-12 h-3 bg-gray-200 rounded-full" />
+        <div className="flex gap-1">
+          <div className="w-3 h-3 bg-blue-600 rounded-sm" />
+          <div className="w-3 h-3 bg-gray-200 rounded-sm" />
+        </div>
+      </div>
+      <div className="flex-1 p-3">
+        <div className="grid grid-cols-2 gap-2">
+          <div className="aspect-square bg-gray-100 rounded-xl" />
+          <div className="aspect-square bg-gray-100 rounded-xl" />
+          <div className="col-span-2 h-20 bg-gray-100 rounded-xl" />
+        </div>
+      </div>
+      <div className="p-3 bg-gray-900 text-[6px] text-white/50 text-center font-mono">
+        viewport: 375x812 (mobile)
+      </div>
+    </div>
+  )
+}
+
+function TestingScreen({ lang, copy }: { lang: "en" | "es"; copy: typeof copy }) {
+  const l = (key: keyof typeof copy) => copy[key][lang]
+  return (
+    <div className="h-full bg-white p-4 flex flex-col gap-4 overflow-hidden relative">
+      <div className="flex justify-between items-center">
+        <p className="text-[10px] font-bold text-gray-800">Analytics Heatmap</p>
+        <div className="w-6 h-6 rounded-full bg-gray-100" />
+      </div>
+      <div className="flex-1 bg-gray-50 rounded-2xl relative overflow-hidden border border-gray-100">
+        <div className="absolute top-1/4 left-1/3 w-12 h-12 bg-red-400 rounded-full blur-xl opacity-40 animate-pulse" />
+        <div className="absolute top-1/2 right-1/4 w-16 h-16 bg-orange-300 rounded-full blur-xl opacity-30" />
+        <div className="absolute bottom-1/4 left-1/2 w-20 h-20 bg-blue-400 rounded-full blur-2xl opacity-20" />
+        
+        <div className="absolute top-10 left-10 p-1 bg-white shadow-md rounded text-[7px] border border-gray-100">
+          {l("testing")}
+        </div>
+      </div>
+      <p className="text-[8px] text-gray-400 text-center italic">Iteration based on real usage</p>
+    </div>
+  )
+}
+
 function ColorsScreen({ lang, copy }: { lang: "en" | "es"; copy: typeof copy }) {
+  // Keeping this for backward compatibility if needed, but not in main practices list
   const l = (key: keyof typeof copy) => copy[key][lang]
   return (
     <div className="h-full bg-white p-4 flex flex-col gap-3 overflow-hidden">
       <p className="text-[9px] font-bold text-gray-500 uppercase tracking-wider">{l("colorsTitle")}</p>
       <div className="space-y-1.5">
-        <p className="text-[8px] text-gray-400">{l("primaryAction")}</p>
+        <p className="text-[8px] text-gray-400">Primary action</p>
         <button className="w-full py-2.5 rounded-xl text-white text-[10px] font-bold" style={{ background: "oklch(0.55 0.22 264)" }}>
-          {l("getStarted")}
+          Get Started
         </button>
       </div>
       <div className="space-y-1.5">
-        <p className="text-[8px] text-gray-400">{l("secondaryAction")}</p>
+        <p className="text-[8px] text-gray-400">Secondary action</p>
         <button className="w-full py-2.5 rounded-xl text-[10px] font-bold border-2" style={{ borderColor: "oklch(0.55 0.22 264)", color: "oklch(0.55 0.22 264)" }}>
-          {l("learnMore")}
+          Learn More
         </button>
       </div>
       <div className="space-y-1.5">
-        <p className="text-[8px] text-gray-400">{l("errorAction")}</p>
+        <p className="text-[8px] text-gray-400">Error / Destructive</p>
         <button className="w-full py-2.5 rounded-xl text-white text-[10px] font-bold bg-red-500">
-          {l("deleteAccount")}
+          Delete Account
         </button>
-      </div>
-      <div className="mt-1">
-        <p className="text-[8px] text-gray-400 mb-1.5">{l("contrastCheck")}</p>
-        <div className="grid grid-cols-2 gap-1.5">
-          <div className="bg-white border border-gray-200 rounded-lg p-2 flex items-center justify-center">
-            <p className="text-[8px] text-gray-200">{l("poorContrast")}</p>
-          </div>
-          <div className="rounded-lg p-2 flex items-center justify-center" style={{ background: "oklch(0.55 0.22 264)" }}>
-            <p className="text-[8px] text-white font-bold">{l("goodContrast")}</p>
-          </div>
-        </div>
       </div>
     </div>
   )
 }
 
 function TypographyScreen({ lang, copy }: { lang: "en" | "es"; copy: typeof copy }) {
+  // Keeping this for backward compatibility
   const l = (key: keyof typeof copy) => copy[key][lang]
   return (
     <div className="h-full bg-white p-4 flex flex-col gap-3 overflow-hidden">
-      <p className="text-[9px] font-bold text-gray-500 uppercase tracking-wider">{l("typeHierarchy")}</p>
+      <p className="text-[9px] font-bold text-gray-500 uppercase tracking-wider">Type Hierarchy</p>
       <div className="space-y-3">
-        <div>
-          <p className="text-[7px] text-gray-400 mb-0.5">{l("h1Display")}</p>
-          <p className="text-xl font-bold text-gray-900 leading-tight">{l("h1Text")}</p>
-        </div>
-        <div>
-          <p className="text-[7px] text-gray-400 mb-0.5">{l("h2Heading")}</p>
-          <p className="text-sm font-bold text-gray-800">{l("h2Text")}</p>
-        </div>
-        <div>
-          <p className="text-[7px] text-gray-400 mb-0.5">{l("h3Sub")}</p>
-          <p className="text-[11px] font-semibold text-gray-700">{l("h3Text")}</p>
-        </div>
-        <div>
-          <p className="text-[7px] text-gray-400 mb-0.5">{l("bodyRegular")}</p>
-          <p className="text-[9px] text-gray-600 leading-relaxed">{l("bodyText")}</p>
-        </div>
-        <div>
-          <p className="text-[7px] text-gray-400 mb-0.5">{l("captionSmall")}</p>
-          <p className="text-[7px] text-gray-400">{l("captionText")}</p>
-        </div>
+        <p className="text-xl font-bold text-gray-900 leading-tight">Design Matters</p>
+        <p className="text-sm font-bold text-gray-800">Section Title Here</p>
+        <p className="text-[11px] font-semibold text-gray-700">Card or item label</p>
+        <p className="text-[9px] text-gray-600 leading-relaxed">This is regular body text used for descriptions.</p>
       </div>
     </div>
   )
 }
 
 function SpacingScreen({ lang, copy }: { lang: "en" | "es"; copy: typeof copy }) {
+  // Keeping this for backward compatibility
   const l = (key: keyof typeof copy) => copy[key][lang]
-  const items = [l("itemA"), l("itemB"), l("itemC")]
+  const items = ["Item A", "Item B", "Item C"]
   return (
     <div className="h-full bg-white flex flex-col gap-2 p-2 overflow-hidden">
-      <p className="text-[9px] font-bold text-gray-500 uppercase tracking-wider px-2 pt-1">{l("spacingDemo")}</p>
-      <div>
-        <p className="text-[8px] text-red-400 mb-1 px-2">{l("cramped")}</p>
-        <div className="bg-red-50 border border-red-100 rounded-xl p-1.5 mx-1">
-          {items.map((item) => (
-            <div key={item} className="flex items-center gap-1 py-px border-b border-red-100 last:border-0">
-              <div className="w-3 h-3 bg-red-200 rounded" />
-              <p className="text-[8px] text-gray-600">{item}</p>
+      <p className="text-[9px] font-bold text-gray-500 uppercase tracking-wider px-2 pt-1">Spacing Demo</p>
+      <div className="bg-green-50 border border-green-100 rounded-xl p-2 mx-1">
+        {items.map((item) => (
+          <div key={item} className="flex items-center gap-2.5 py-1.5 border-b border-green-100 last:border-0">
+            <div className="w-5 h-5 rounded-lg flex items-center justify-center" style={{ background: "oklch(0.55 0.22 264)" }}>
+              <svg className="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
             </div>
-          ))}
-        </div>
-      </div>
-      <div>
-        <p className="text-[8px] text-green-500 mb-1 px-2">{l("wellSpaced")}</p>
-        <div className="bg-green-50 border border-green-100 rounded-xl p-2 mx-1">
-          {items.map((item) => (
-            <div key={item} className="flex items-center gap-2.5 py-1.5 border-b border-green-100 last:border-0">
-              <div className="w-5 h-5 rounded-lg flex items-center justify-center" style={{ background: "oklch(0.55 0.22 264)" }}>
-                <svg className="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <p className="text-[9px] font-medium text-gray-700">{item}</p>
-            </div>
-          ))}
-        </div>
+            <p className="text-[9px] font-medium text-gray-700">{item}</p>
+          </div>
+        ))}
       </div>
     </div>
   )
@@ -375,7 +631,6 @@ function SpacingScreen({ lang, copy }: { lang: "en" | "es"; copy: typeof copy })
 
 function NavigationScreen({ lang, copy }: { lang: "en" | "es"; copy: typeof copy }) {
   const l = (key: keyof typeof copy) => copy[key][lang]
-  const topItems = [l("navHome"), l("navExplore"), l("navProfile"), l("navMore")]
   const bottomItems = [
     { key: "navHome", active: true },
     { key: "navSearch", active: false },
@@ -386,111 +641,44 @@ function NavigationScreen({ lang, copy }: { lang: "en" | "es"; copy: typeof copy
   return (
     <div className="h-full bg-white flex flex-col overflow-hidden">
       <div className="flex-1 p-4">
-        <p className="text-[9px] font-bold text-gray-500 uppercase tracking-wider mb-3">{l("navPatterns")}</p>
-        <p className="text-[8px] text-orange-500 mb-1.5">{l("topMenu")}</p>
-        <div className="bg-gray-800 rounded-xl flex justify-around py-2 mb-4">
-          {topItems.map((item) => (
-            <p key={item} className="text-[7px] text-gray-300">{item}</p>
-          ))}
-        </div>
-        <div className="flex items-center gap-1.5 mb-4">
-          <div className="w-3 h-3 bg-orange-400 rounded-full flex-shrink-0" />
-          <p className="text-[8px] text-gray-500">{l("thumbStretch")}</p>
-        </div>
+        <p className="text-[9px] font-bold text-gray-500 uppercase tracking-wider mb-3">Navigation</p>
         <div className="space-y-1.5">
-          {[80, 60, 70].map((w, i) => (
+          {[80, 60, 70, 50].map((w, i) => (
             <div key={i} className="h-1.5 bg-gray-100 rounded-full" style={{ width: `${w}%` }} />
           ))}
         </div>
       </div>
-      <div>
-        <p className="text-[8px] text-green-500 text-center mb-1">{l("bottomNav")}</p>
-        <div className="border-t border-gray-100 flex justify-around py-2.5 px-3">
-          {bottomItems.map(({ key, active }) => (
-            <div key={key} className="flex flex-col items-center gap-0.5">
-              <div className={`w-5 h-5 rounded-lg ${active ? "bg-primary" : "bg-gray-200"}`} />
-              <p className={`text-[7px] ${active ? "text-primary font-semibold" : "text-gray-400"}`}>{l(key)}</p>
-            </div>
-          ))}
-        </div>
+      <div className="border-t border-gray-100 flex justify-around py-2.5 px-3">
+        {bottomItems.map(({ key, active }) => (
+          <div key={key} className="flex flex-col items-center gap-0.5">
+            <div className={`w-5 h-5 rounded-lg ${active ? "bg-primary" : "bg-gray-200"}`} />
+            <p className={`text-[7px] ${active ? "text-primary font-semibold" : "text-gray-400"}`}>{l(key)}</p>
+          </div>
+        ))}
       </div>
     </div>
   )
 }
 
 function IconScreen({ lang, copy }: { lang: "en" | "es"; copy: typeof copy }) {
+  // Keeping this for backward compatibility (could be used in Hierarchy or Accessibility)
   const l = (key: keyof typeof copy) => copy[key][lang]
-
-  const icons = [
-    {
-      clear: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-        </svg>
-      ),
-      confusing: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
-        </svg>
-      ),
-      labelKey: "iconHome" as const,
-    },
-    {
-      clear: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
-      ),
-      confusing: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-        </svg>
-      ),
-      labelKey: "iconSearch" as const,
-    },
-    {
-      clear: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-        </svg>
-      ),
-      confusing: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-        </svg>
-      ),
-      labelKey: "iconFav" as const,
-    },
-  ]
-
   return (
     <div className="h-full bg-white p-4 flex flex-col gap-3 overflow-hidden">
-      <p className="text-[9px] font-bold text-gray-500 uppercase tracking-wider">{l("iconClarity")}</p>
-      <div className="grid grid-cols-2 gap-2">
+      <p className="text-[9px] font-bold text-gray-500 uppercase tracking-wider">Iconography</p>
+      <div className="grid grid-cols-1 gap-2">
         <div className="bg-green-50 rounded-xl p-2.5">
-          <p className="text-[8px] text-green-600 font-semibold mb-2">{l("clearIcons")}</p>
-          <div className="space-y-2">
-            {icons.map(({ clear, labelKey }) => (
-              <div key={labelKey} className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-lg bg-white shadow-sm flex items-center justify-center text-gray-700">{clear}</div>
-                <p className="text-[8px] text-gray-600">{l(labelKey)}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="bg-red-50 rounded-xl p-2.5">
-          <p className="text-[8px] text-red-500 font-semibold mb-2">{l("confusingIcons")}</p>
-          <div className="space-y-2">
-            {icons.map(({ confusing, labelKey }) => (
-              <div key={labelKey} className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-lg bg-white shadow-sm flex items-center justify-center text-gray-500">{confusing}</div>
-                <p className="text-[8px] text-gray-400">???</p>
-              </div>
-            ))}
+          <div className="flex items-center gap-2">
+            <div className="w-7 h-7 rounded-lg bg-white shadow-sm flex items-center justify-center text-gray-700">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+              </svg>
+            </div>
+            <p className="text-[8px] text-gray-600">Home</p>
           </div>
         </div>
       </div>
-      <p className="text-[8px] text-gray-400 mt-auto">{l("iconNote")}</p>
     </div>
   )
 }
+
