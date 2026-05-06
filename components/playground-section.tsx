@@ -509,7 +509,7 @@ function LivePreviewScreen({
     ])
   ]
 
-  const todoItems = isEssential ? ["task1"] : ["task1", "task2", "task3"]
+  const todoItems = (isEssential ? ["task1"] : ["task1", "task2", "task3"]) as (keyof typeof copy)[]
   const navItems = ["homeNav", "tasksNav", "meNav"] as const
 
   const textStyle = {
