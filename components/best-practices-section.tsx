@@ -19,6 +19,7 @@ const copy = {
   navigationLabel: { en: "Navigation", es: "Navegacion" },
   touchLabel: { en: "Touch-friendly", es: "Tactil" },
   speedLabel: { en: "Speed", es: "Velocidad" },
+  spacingLabel: { en: "Spacing", es: "Espaciado" },
   consistencyLabel: { en: "Consistency", es: "Consistencia" },
   hierarchyLabel: { en: "Hierarchy", es: "Jerarquia" },
   accessibilityLabel: { en: "Accessibility", es: "Accesibilidad" },
@@ -118,8 +119,6 @@ const copy = {
   // Reusing some old keys for consistency or creating new ones as needed
   colorsTitle: { en: "Colors & Contrast", es: "Colores y Contraste" },
   typographyTitle: { en: "Typography", es: "Tipografia" },
-  spacingTitle: { en: "Spacing", es: "Espaciado" },
-  navigationLabel: { en: "Navigation", es: "Navegacion" },
   iconsLabel: { en: "Icons", es: "Iconos" },
   iconClarity: { en: "Icon Clarity", es: "Claridad de Iconos" },
   clearIcons: { en: "Clear icons", es: "Iconos claros" },
