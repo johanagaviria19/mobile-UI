@@ -47,6 +47,11 @@ const copy = {
     en: "A slow app is a lost user. Optimize images and use smart loading states.",
     es: "Una app lenta es un usuario perdido. Optimiza imagenes y usa carga progresiva inteligente.",
   },
+  spacingTitle: { en: "Mastering Spacing", es: "Tipos de espaciado" },
+  spacingDesc: {
+    en: "Understand the difference between Gap (between), Margin (external), and Padding (internal).",
+    es: "Entiende la diferencia entre Gap (entre elementos), Margin (externo) y Padding (interno).",
+  },
   consistencyTitle: { en: "Visual Consistency", es: "Consistencia visual" },
   consistencyDesc: {
     en: "Keep a uniform style: coherent colors, consistent typography, and same logic for buttons.",
@@ -77,6 +82,14 @@ const copy = {
     en: "Never design 'by eye'. Test with real users, observe confusion, and iterate.",
     es: "Nunca disenies solo 'a ojo'. Testea con usuarios reales, observa donde se confunden e itera.",
   },
+
+  // Spacing Detail keys
+  gapLabel: { en: "1. Gap (Between items)", es: "🧩 1. Gap (el mas usado)" },
+  gapInfo: { en: "Space between grid/flex elements.", es: "Espacio entre los elementos (recuadros)." },
+  marginLabel: { en: "2. Margin (External)", es: "📦 2. Margin (espacio externo)" },
+  marginInfo: { en: "Space outside the element.", es: "m = margin (afuera del elemento)." },
+  paddingLabel: { en: "3. Padding (Internal)", es: "📐 3. Padding (espacio interno)" },
+  paddingInfo: { en: "Space inside the element.", es: "p = espacio dentro del recuadro." },
 
   // Mockup internal texts
   essential: { en: "Only Essential", es: "Solo lo esencial" },
@@ -164,6 +177,18 @@ export function BestPracticesSection() {
       title: l("speedTitle"),
       desc: l("speedDesc"),
       screen: <SpeedScreen lang={lang} copy={copy} />,
+    },
+    {
+      id: "spacing",
+      label: l("spacingLabel"),
+      icon: (
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8h16M4 16h16" />
+        </svg>
+      ),
+      title: l("spacingTitle"),
+      desc: l("spacingDesc"),
+      screen: <SpacingScreen lang={lang} copy={copy} />,
     },
     {
       id: "consistency",
@@ -607,23 +632,37 @@ function TypographyScreen({ lang, copy }: { lang: "en" | "es"; copy: typeof copy
 }
 
 function SpacingScreen({ lang, copy }: { lang: "en" | "es"; copy: typeof copy }) {
-  // Keeping this for backward compatibility
   const l = (key: keyof typeof copy) => copy[key][lang]
-  const items = ["Item A", "Item B", "Item C"]
   return (
-    <div className="h-full bg-white flex flex-col gap-2 p-2 overflow-hidden">
-      <p className="text-[9px] font-bold text-gray-500 uppercase tracking-wider px-2 pt-1">Spacing Demo</p>
-      <div className="bg-green-50 border border-green-100 rounded-xl p-2 mx-1">
-        {items.map((item) => (
-          <div key={item} className="flex items-center gap-2.5 py-1.5 border-b border-green-100 last:border-0">
-            <div className="w-5 h-5 rounded-lg flex items-center justify-center" style={{ background: "oklch(0.55 0.22 264)" }}>
-              <svg className="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <p className="text-[9px] font-medium text-gray-700">{item}</p>
+    <div className="h-full bg-white p-4 flex flex-col gap-6 overflow-hidden">
+      {/* Gap Demo */}
+      <div className="space-y-2">
+        <p className="text-[10px] font-bold text-gray-800">{l("gapLabel")}</p>
+        <div className="grid grid-cols-2 gap-3 bg-blue-50 p-2 rounded-xl border border-blue-100">
+          <div className="h-8 bg-blue-500 rounded-lg flex items-center justify-center text-white text-[8px] font-bold">1</div>
+          <div className="h-8 bg-blue-500 rounded-lg flex items-center justify-center text-white text-[8px] font-bold">2</div>
+        </div>
+        <p className="text-[8px] text-gray-400 italic">{l("gapInfo")}</p>
+      </div>
+
+      {/* Margin Demo */}
+      <div className="space-y-2">
+        <p className="text-[10px] font-bold text-gray-800">{l("marginLabel")}</p>
+        <div className="bg-orange-50 p-2 rounded-xl border border-orange-100 flex">
+          <div className="m-2 h-8 w-1/2 bg-orange-500 rounded-lg flex items-center justify-center text-white text-[8px] font-bold">Caja</div>
+        </div>
+        <p className="text-[8px] text-gray-400 italic">{l("marginInfo")}</p>
+      </div>
+
+      {/* Padding Demo */}
+      <div className="space-y-2">
+        <p className="text-[10px] font-bold text-gray-800">{l("paddingLabel")}</p>
+        <div className="bg-green-50 rounded-xl border border-green-100">
+          <div className="p-4 bg-green-500 rounded-lg text-white text-[8px] font-bold text-center">
+            Contenido
           </div>
-        ))}
+        </div>
+        <p className="text-[8px] text-gray-400 italic">{l("paddingInfo")}</p>
       </div>
     </div>
   )
